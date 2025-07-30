@@ -20,12 +20,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\Client.csproj"/>
+    <ProjectReference Include="..\Client\Client.csproj" />
     <ProjectReference Include="..\external\FontStashSharp\src\XNA\FontStashSharp.FNA.Core.csproj" />
-    <ProjectReference Include="..\Server\Server.csproj"/>
-    <ProjectReference Include="..\Shared\Shared.csproj"/>
-    <ProjectReference Include="..\external\FNA\FNA.Core.csproj"/>
-    <ProjectReference Include="..\external\ImGui.NET\src\ImGui.NET\ImGui.NET.csproj"/>
+    <ProjectReference Include="..\Server\Server.csproj" />
+    <ProjectReference Include="..\Shared\Shared.csproj" />
+    <ProjectReference Include="..\external\FNA\FNA.Core.csproj" />
+    <ProjectReference Include="..\external\ImGui.NET\src\ImGui.NET\ImGui.NET.csproj" />
   </ItemGroup>
   
   <PropertyGroup>
@@ -41,19 +41,19 @@
   <ItemGroup Condition="'$(_IsWindows)' == 'true'">
     <DataFiles Include="..\lib\x64\*.*" />
     <DataFiles Include="$(ProjectDir)..\external\fna-libs\x64\*.*" />
-    <DataFiles Include="..\external\ImGui.NET\deps\cimgui\win-x64\cimgui.dll" Condition="'$(_IsWindows)' == 'true'"/>
+    <DataFiles Include="..\external\ImGui.NET\deps\cimgui\win-x64\cimgui.dll" Condition="'$(_IsWindows)' == 'true'" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(_IsLinux)' == 'true'">
     <DataFiles Include="..\lib\lib64\*.*" />
-    <DataFiles Include="$(ProjectDir)..\external\fna-libs\lib64\*.*"/>
-    <DataFiles Include="..\external\ImGui.NET\deps\cimgui\linux-x64\cimgui.so"/>
+    <DataFiles Include="$(ProjectDir)..\external\fna-libs\lib64\*.*" />
+    <DataFiles Include="..\external\ImGui.NET\deps\cimgui\linux-x64\cimgui.so" />
   </ItemGroup>
   
-  <ItemGroup Condition="'$(_IsMacOS)' == 'true'" >
+  <ItemGroup Condition="'$(_IsMacOS)' == 'true'">
     <DataFiles Include="..\lib\osx\*.*" />
-    <DataFiles Include="$(ProjectDir)..\external\fna-libs\osx\*.*"/>
-    <DataFiles Include="..\external\ImGui.NET\deps\cimgui\osx\cimgui.dylib"/>
+    <DataFiles Include="$(ProjectDir)..\external\fna-libs\osx\*.*" />
+    <DataFiles Include="..\external\ImGui.NET\deps\cimgui\osx\cimgui.dylib" />
   </ItemGroup>
   
   <ItemGroup>
@@ -91,15 +91,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.9" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.11" />
   </ItemGroup>
 
   <Target Name="CopyExternalDeps_build" AfterTargets="Build">
-    <Copy SourceFiles="@(DataFiles)" DestinationFiles="@(DataFiles->'$(OutDir)/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(DataFiles)" DestinationFiles="@(DataFiles-&gt;'$(OutDir)/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
   </Target>
 
   <Target Name="CopyExternalDeps_publish" AfterTargets="Publish">
-    <Copy SourceFiles="@(DataFiles)" DestinationFiles="@(DataFiles->'$(PublishDir)/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true"/>
+    <Copy SourceFiles="@(DataFiles)" DestinationFiles="@(DataFiles-&gt;'$(PublishDir)/%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
   </Target>
 
 </Project>
